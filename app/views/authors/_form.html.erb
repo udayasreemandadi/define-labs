@@ -1,0 +1,86 @@
+<%= form_with(model: author, local: true) do |form| %>
+  <% if @author.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(author.errors.count, "error") %> prohibited this author from being saved:</h2>
+
+      <ul>
+      <% author.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :author_id %>
+    <%= form.number_field :author_id,:class => "form-control",:placeholder => "Enter author id",:required => true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :first_name %>
+    <%= form.text_area :first_name,:class => "form-control",:placeholder => "Enter author first name",:required => true %>
+  </div>
+
+  <div class="field">
+    <%= form.label :last_name %>
+    <%= form.text_area :last_name ,:class => "form-control",:placeholder => "Enter author last name",:required => true%>
+  </div>
+
+  <div class="field">
+    <%= form.label :date_of_birth %>
+    <%= form.date_select :date_of_birth %>
+  </div>
+
+  <div class="field">
+    <%= form.label :books %>
+    <%= form.select :book_ids ,options_for_select(@books) , {prompt: "Select Books"},{:multiple => true,class: "form-select2-multi"} %>
+  </div>
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+
+<style type="text/css">
+  .form-select2-multi{
+  width: 7%;
+  display: block;
+ 
+  &.select2-dropdown-open{
+    &.select2-drop-above{
+      .select2-choices{
+        background-image: none;
+        border: 1px solid $selectColor;
+      }
+    }
+  }
+  &.select2-container-active{
+    .select2-choices{
+      box-shadow: none;
+      border: 1px solid $selectColor;
+    }
+  }
+}
+.select2-container-multi{
+   .select2-choices{
+     .select2-search-choice{
+       border: none;
+       box-shadow: none;
+       .select2-search-choice-close{
+          left: 0px;
+          background-color: $select2choicex;
+          background-size: 60px 50px !important;
+          background-position: -44px 2px;
+          transition: 0.3s ease-in-out;
+          width: 17px;
+          height: 19px;
+          top: 0px;
+          border-radius: 3px 0 0 3px;
+          &:hover{
+            background-position: -44px -13px;
+          }
+        }
+     }
+   }
+}
+</style>

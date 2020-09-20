@@ -1,0 +1,13 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  author_id: 1
+  first_name: MyText
+  last_name: MyText
+  date_of_birth: 2020-09-20
+
+two:
+  author_id: 1
+  first_name: MyText
+  last_name: MyText
+  date_of_birth: 2020-09-20

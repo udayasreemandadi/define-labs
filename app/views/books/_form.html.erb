@@ -1,0 +1,76 @@
+<%= form_with(model: book, local: true) do |form| %>
+  <% if book.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(book.errors.count, "error") %> prohibited this book from being saved:</h2>
+
+      <ul>
+      <% book.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <%= form.label :book_id %>
+    <%= form.number_field :book_id ,:class => "form-control",:placeholder => "Enter book id",:required => true%>
+  </div>
+
+  <div class="field">
+    <%= form.label :title %>
+    <%= form.text_field :title ,:class => "form-control",:placeholder => "Enter book name",:required => true%>
+  </div>
+
+  <div class="field">
+    <%= form.label :authors %>
+    <%= form.select :author_ids ,options_for_select(@authors) , {prompt: "Select Authors"},{:multiple => true,class: "form-select2-multi"} %>
+  </div>
+
+
+  <div class="actions">
+    <%= form.submit %>
+  </div>
+<% end %>
+<style type="text/css">
+  .form-select2-multi{
+  width: 7%;
+  display: block;
+ 
+  &.select2-dropdown-open{
+    &.select2-drop-above{
+      .select2-choices{
+        background-image: none;
+        border: 1px solid $selectColor;
+      }
+    }
+  }
+  &.select2-container-active{
+    .select2-choices{
+      box-shadow: none;
+      border: 1px solid $selectColor;
+    }
+  }
+}
+.select2-container-multi{
+   .select2-choices{
+     .select2-search-choice{
+       border: none;
+       box-shadow: none;
+       .select2-search-choice-close{
+          left: 0px;
+          background-color: $select2choicex;
+          background-size: 60px 50px !important;
+          background-position: -44px 2px;
+          transition: 0.3s ease-in-out;
+          width: 17px;
+          height: 19px;
+          top: 0px;
+          border-radius: 3px 0 0 3px;
+          &:hover{
+            background-position: -44px -13px;
+          }
+        }
+     }
+   }
+}
+</style>

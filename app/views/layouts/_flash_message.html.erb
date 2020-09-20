@@ -1,0 +1,15 @@
+<% if flash[:success].present? %>
+  <script type="text/javascript">
+    toaster('success', '<%= content_tag(:div, flash[:success], class: "flash") %>');
+  </script>
+<% end %>
+<% if flash[:error].present? %>
+  <script type="text/javascript">
+    toaster('error', '<%= content_tag(:div, flash[:error], class: "flash") %>');
+  </script>
+<% end %>
+<% if flash[:notice].present? %>
+  <script type="text/javascript">
+    toaster('info', '<%= content_tag(:div, flash[:notice], class: "flash") %>');
+  </script>
+<% end %>
